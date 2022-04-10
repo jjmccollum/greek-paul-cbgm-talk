@@ -39,7 +39,7 @@
 	\end{frame}
 	\begin{frame}
 		\begin{itemize}
-			\item \emph{Not} a way to make computers do textual criticism, but a way for them to help us refine our judgments
+			\item \emph{Not} a way to make computers do textual criticism, but a way for them to help us refine human judgments
 			\item \emph{Not} a new methodology for evaluating variant readings, but a ``meta-approach'' to be used on top of existing methods
 		\end{itemize}
 	\end{frame}
@@ -62,6 +62,15 @@
 			\end{enumerate}
 		\end{itemize}
 	\end{frame}
+	\section*{Roadmap}
+	\begin{frame}
+		\begin{itemize}
+			\item ``Iterative workflow'' highlighted in blue
+		\end{itemize}
+		\begin{center}
+			\includegraphics[width=0.5\textwidth]{../img/roadmap.pdf}
+		\end{center}
+	\end{frame}
 	\section*{Collation}
 	\begin{frame}
 		\begin{itemize}
@@ -69,18 +78,36 @@
 			\item \emph{Variant readings} occur at variation units
 		\end{itemize}
 		\begin{center}
-			\includegraphics[width=0.75\textwidth]{../img/swanson-luke-10-2-variation-units.pdf}
+			\includegraphics[width=0.75\textwidth]{../img/swanson-luke-10-2-variation-units.png}
 		\end{center}
 		\footnotesize\parencite[Source:][183]{Swanson.Luke}
 	\end{frame}
 	\begin{frame}
 		\begin{itemize}
-			\item Variation units serve as our points of comparison between any two texts in the CBGM
+			\item Variation units serve as our points of comparison between witnesses in the CBGM
 			\item Think of them as the columns of a table and the witnesses as rows
 		\end{itemize}
 		\begin{center}
 			\includegraphics[scale=0.5]{../img/witnesses.pdf}
 		\end{center}
+	\end{frame}
+	\begin{frame}
+		\begin{itemize}
+			\item This is readily encoded in TEI XML format
+		\end{itemize}
+		\begin{center}
+			\includegraphics[width=0.65\textwidth]{../img/collation-xml.png}
+		\end{center}
+	\end{frame}
+	\begin{frame}
+		\begin{columns}
+			\begin{column}{0.25\textwidth}
+				\includegraphics[width=\textwidth]{../img/swanson-luke-10-2-2.png}
+			\end{column}
+			\begin{column}{0.65\textwidth}
+				\includegraphics[width=\textwidth]{../img/app-xml.png}
+			\end{column}
+		\end{columns}
 	\end{frame}
 	\section*{The Local Stemma}
 	\begin{frame}
@@ -88,6 +115,7 @@
 			\item The basic unit of comparison
 			\item One for each variation unit
 			\item A graphical representation of our judgments of readings
+			\item Kurt Aland's ``local genealogical'' principle
 		\end{itemize}
 		\begin{columns}
 			\begin{column}{0.45\textwidth}
@@ -106,16 +134,26 @@
 		\begin{itemize}
 			\item Some are more complicated
 			\begin{itemize}
-				\item \emph{defective} readings (e.g., obvious misspellings)
+				\item \emph{defective} readings (e.g., misspellings, reconstructions)
 				\item \emph{orthographic} readings (e.g., regional differences)
 				\item \emph{split} attestations of the same reading (coincidental agreement)
-				\item \emph{ambiguous} readings
+				\item \emph{ambiguous} readings (can be reconstructed as more than one reading)
 			\end{itemize}
 			\item Some of these may be collapsed with other substantive readings
 			\begin{center}
 				\includegraphics[scale=0.5]{../img/B25K1V4U22-26-local-stemma-ignore-defective-ignore-ambiguous-merge-splits.pdf}
 			\end{center}
 		\end{itemize}
+	\end{frame}
+	\begin{frame}
+		\begin{columns}
+			\begin{column}{0.55\textwidth}
+				\includegraphics[width=\textwidth]{../img/B25K1V4U22-26-local-stemma-no-legend.pdf}
+			\end{column}
+			\begin{column}{0.4\textwidth}
+				\includegraphics[scale=0.6667]{../img/local-stemma-xml.png}
+			\end{column}
+		\end{columns}
 	\end{frame}
 	\section*{Witnesses}
 	\begin{frame}
@@ -147,9 +185,46 @@
 		\begin{center}
 			\includegraphics[width=\textwidth]{../img/genealogical-relationships.pdf}
 		\end{center}
+	\end{frame}
+	\begin{frame}
 		\begin{itemize}
-			\item The first three are the most important
+			\item We say that one reading \emph{explains} another if
+			\begin{itemize}
+				\item it is the same reading (explanation by agreement), or
+				\item there is an edge in the local stemma from it to the other reading
+			\end{itemize}
 		\end{itemize}
+		\begin{center}
+			\includegraphics[width=\textwidth]{../img/explained-readings.pdf}
+		\end{center}
+		\begin{itemize}
+			\item Lacunae do not have to be explained, and they cannot explain readings
+			\item The \emph{cost} of a genealogical relationship is the number of explained readings that are not agreements (so the cost in the example above is $2$)
+		\end{itemize}
+	\end{frame}
+	\begin{frame}
+		It is convenient to encode genealogical relationships with \emph{bit-arrays}
+		\begin{columns}
+			\begin{column}{0.45\textwidth}
+				\begin{align*}
+					\mathtt{agree} &= [1,0,0,0,0]\\
+					\mathtt{prior} &= [0,1,0,0,0]\\
+					\mathtt{posterior} &= [0,0,1,0,0]\\
+					\phantom{*}
+				\end{align*}
+			\end{column}
+			\begin{column}{0.45\textwidth}
+				\begin{align*}
+					\mathtt{norel} &= [0,0,0,1,0]\\
+					\mathtt{uncl} &= [0,0,0,0,1]\\
+					\mathtt{expl} &= [1,0,1,0,0]\\
+					\mathtt{cost} &= 1
+				\end{align*}
+			\end{column}
+		\end{columns}
+		\begin{center}
+			\includegraphics[width=\textwidth]{../img/genealogical-relationships.pdf}
+		\end{center}
 	\end{frame}
 	\section*{Potential Ancestors}
 	\begin{frame}
@@ -165,7 +240,7 @@
 		\begin{columns}
 			\begin{column}{0.45\textwidth}
 				\begin{itemize}
-					\item \emph{Textual flow} is a useful tool for helping us revise our judgments in a local stemma
+					\item \emph{Textual flow} is a tool for helping us revise our judgments in a local stemma
 					\item \emph{Not} a global stemma (our ultimate goal), but still important
 				\end{itemize}
 			\end{column}
@@ -245,7 +320,7 @@
 		\begin{columns}
 			\begin{column}{0.45\textwidth}
 				\begin{itemize}
-					\item Using this information, we can attempt to explain previous unexplained readings
+					\item Between coherence (a form of external evidence) and internal evidence, we can attempt to explain previous unexplained readings
 					\item A necessary step for our ultimate goal of constructing a global stemma
 				\end{itemize}
 			\end{column}
@@ -256,50 +331,35 @@
 			\end{column}
 		\end{columns}
 	\end{frame}
-	\section*{``Explained'' Readings}
-	\begin{frame}
-		\begin{itemize}
-			\item We say that one reading \emph{explains} another if
-			\begin{itemize}
-				\item it is the same reading (explanation by agreement), or
-				\item there is an edge in the local stemma from it to the other reading
-			\end{itemize}
-		\end{itemize}
-		\begin{center}
-			\includegraphics[width=\textwidth]{../img/explained-readings.pdf}
-		\end{center}
-		\begin{itemize}
-			\item Lacunae do not have to be explained, and they cannot explain readings
-		\end{itemize}
-	\end{frame}
-	\begin{frame}
-		\begin{columns}
-			\begin{column}{0.4\textwidth}
-				\centering
-				\includegraphics[width=0.75\textwidth]{../img/intermediary-node-example.pdf}
-			\end{column}
-			\begin{column}{0.55\textwidth}
-				\begin{itemize}
-					\item Does a reading explain any of its posterior readings transitively (i.e., in the local stemma to the left, does \emph{a} explain \emph{c})?
-					\item As originally formulated, \emph{no}: \emph{a} explains \emph{b} and \emph{b} explains \emph{c}, but \emph{a} does not explain \emph{c} (it's too many steps removed)
-					\item Later, in the global stemma, \emph{intermediary nodes} may be needed to ensure that all readings are explained
-				\end{itemize}
-			\end{column}
-		\end{columns}
-	\end{frame}
-	\begin{frame}
-		\begin{columns}
-			\begin{column}{0.4\textwidth}
-				\centering
-				\includegraphics[width=0.75\textwidth]{../img/transitivity-example.pdf}
-			\end{column}
-			\begin{column}{0.55\textwidth}
-				\begin{itemize}
-					\item If we instead allow \emph{a} to explain \emph{c}, but at a higher cost (more on this in the substemma slides), then we remove the need for intermediary nodes (although multiple changes in the same variation unit may be implied along an edge in the global stemma)
-				\end{itemize}
-			\end{column}
-		\end{columns}
-	\end{frame}
+%	\section*{Explained Readings}
+%	\begin{frame}
+%		\begin{columns}
+%			\begin{column}{0.4\textwidth}
+%				\centering
+%				\includegraphics[width=0.75\textwidth]{../img/intermediary-node-example.pdf}
+%			\end{column}
+%			\begin{column}{0.55\textwidth}
+%				\begin{itemize}
+%					\item Does a reading explain any of its posterior readings transitively (i.e., in the local stemma to the left, does \emph{a} explain \emph{c})?
+%					\item As originally formulated, \emph{no}: \emph{a} explains \emph{b} and \emph{b} explains \emph{c}, but \emph{a} does not explain \emph{c} (it's too many steps removed)
+%					\item Later, in the global stemma, \emph{intermediary nodes} may be needed to ensure that all readings are explained
+%				\end{itemize}
+%			\end{column}
+%		\end{columns}
+%	\end{frame}
+%	\begin{frame}
+%		\begin{columns}
+%			\begin{column}{0.4\textwidth}
+%				\centering
+%				\includegraphics[width=0.75\textwidth]{../img/transitivity-example.pdf}
+%			\end{column}
+%			\begin{column}{0.55\textwidth}
+%				\begin{itemize}
+%					\item If we instead allow \emph{a} to explain \emph{c}, but at a higher cost (more on this in the substemma slides), then we remove the need for intermediary nodes (although multiple changes in the same variation unit may be implied along an edge in the global stemma)
+%				\end{itemize}
+%			\end{column}
+%		\end{columns}
+%	\end{frame}
 	\section*{The Substemma(ta) of a Witness}
 	\begin{frame}
 		\begin{itemize}
@@ -342,20 +402,20 @@
 			\includegraphics[width=\textwidth]{../img/explained-readings-costs.pdf}
 		\end{center}
 	\end{frame}
-	\begin{frame}
-		\begin{columns}
-			\begin{column}{0.45\textwidth}
-				\begin{itemize}
-					\item If we allow a reading to explain any reading posterior to it, then a better cost per variation unit is the length of the path from the prior reading to the posterior one.
-				\end{itemize}
-			\end{column}
-			\begin{column}{0.45\textwidth}
-				\begin{center}
-					\includegraphics[width=0.75\textwidth]{../img/transitivity-cost.pdf}
-				\end{center}
-			\end{column}
-		\end{columns}
-	\end{frame}
+%	\begin{frame}
+%		\begin{columns}
+%			\begin{column}{0.45\textwidth}
+%				\begin{itemize}
+%					\item If we allow a reading to explain any reading posterior to it, then a better cost per variation unit is the length of the path from the prior reading to the posterior one.
+%				\end{itemize}
+%			\end{column}
+%			\begin{column}{0.45\textwidth}
+%				\begin{center}
+%					\includegraphics[width=0.75\textwidth]{../img/transitivity-cost.pdf}
+%				\end{center}
+%			\end{column}
+%		\end{columns}
+%	\end{frame}
 	\section*{Finding a (Good) Substemma}
 	\begin{frame}
 		\begin{itemize}
@@ -444,82 +504,31 @@
 			\href{../img/global-stemma-complete-reoriented.pdf}{*Field trip*}
 		\end{center}
 	\end{frame}
-	\section*{Criticisms and Idiosyncrasies}
-	\begin{frame}
-		\begin{itemize}
-			\item Biggest idiosyncrasy: \emph{no reconstruction of hypothetical ancestors} (because contamination is assumed to make this impossible)
-			\begin{itemize}
-				\item (Personal opinion: this assumption is made for practical rather than theoretical reasons)
-				\item Texts of extant witnesses = bad representatives of ancestors of other extant texts
-				\item CBGM may see ``contamination'' where there's just a gap in the textual tradition
-				\item Enough of the tradition is lost to make this a problem
-			\end{itemize}
-			\item Can the global stemma be understood as a history of the text?
-		\end{itemize}
-	\end{frame}
-	\begin{frame}
-		\begin{itemize}
-			\item Recommended reading:
-			\begin{itemize}
-				\item \cite{Jongkind14}
-				\item The special feature articles in \emph{TC} 20 (2015)
-				\item \cite{Gurry18}
-				\item \cite{Carlson20} (but see \href{http://ntvmr.uni-muenster.de/en_US/intfblog/-/blogs/remarks-on-carlson-a-bias-at-the-heart-of-the-cbgm-guest-post-by-gerd-mink-}{Mink's response})
-			\end{itemize}
-		\end{itemize}
-	\end{frame}
+%	\section*{Criticisms and Idiosyncrasies}
+%	\begin{frame}
+%		\begin{itemize}
+%			\item Biggest idiosyncrasy: \emph{no reconstruction of hypothetical ancestors} (because contamination is assumed to make this impossible)
+%			\begin{itemize}
+%				\item (Personal opinion: this assumption is made for practical rather than theoretical reasons)
+%				\item Texts of extant witnesses = bad representatives of ancestors of other extant texts
+%				\item CBGM may see ``contamination'' where there's just a gap in the textual tradition
+%				\item Enough of the tradition is lost to make this a problem
+%			\end{itemize}
+%			\item Can the global stemma be understood as a history of the text?
+%		\end{itemize}
+%	\end{frame}
+%	\begin{frame}
+%		\begin{itemize}
+%			\item Recommended reading:
+%			\begin{itemize}
+%				\item \cite{Jongkind14}
+%				\item The special feature articles in \emph{TC} 20 (2015)
+%				\item \cite{Gurry18}
+%				\item \cite{Carlson20} (but see \href{http://ntvmr.uni-muenster.de/en_US/intfblog/-/blogs/remarks-on-carlson-a-bias-at-the-heart-of-the-cbgm-guest-post-by-gerd-mink-}{Mink's response})
+%			\end{itemize}
+%		\end{itemize}
+%	\end{frame}
 	\section*{Making It Digital}
-	\begin{frame}
-		\begin{columns}
-			\begin{column}{0.55\textwidth}
-				\begin{center}
-					Collation
-				\end{center}
-			\end{column}
-			\begin{column}{0.4\textwidth}
-				\includegraphics[width=0.9\textwidth]{../img/collation-xml.png}
-			\end{column}
-		\end{columns}
-	\end{frame}
-	\begin{frame}
-		\begin{columns}
-			\begin{column}{0.55\textwidth}
-				\begin{center}
-					Local stemma
-				\end{center}
-				\includegraphics[width=\textwidth]{../img/B25K1V4U22-26-local-stemma-no-legend.pdf}
-			\end{column}
-			\begin{column}{0.4\textwidth}
-				\includegraphics[scale=0.6667]{../img/local-stemma-xml.png}
-			\end{column}
-		\end{columns}
-	\end{frame}
-	\begin{frame}
-		\begin{center}
-			Genealogical relationships
-		\end{center}
-		\begin{columns}
-			\begin{column}{0.45\textwidth}
-				\begin{align*}
-					\mathtt{agree} &= [1,0,0,0,0]\\
-					\mathtt{prior} &= [0,1,0,0,0]\\
-					\mathtt{posterior} &= [0,0,1,0,0]\\
-					\phantom{*}
-				\end{align*}
-			\end{column}
-			\begin{column}{0.45\textwidth}
-				\begin{align*}
-					\mathtt{norel} &= [0,0,0,1,0]\\
-					\mathtt{uncl} &= [0,0,0,0,1]\\
-					\mathtt{expl} &= [1,0,1,0,0]\\
-					\mathtt{cost} &= 1
-				\end{align*}
-			\end{column}
-		\end{columns}
-		\begin{center}
-			\includegraphics[width=\textwidth]{../img/genealogical-relationships.pdf}
-		\end{center}
-	\end{frame}
 	\begin{frame}
 		\begin{itemize}
 			\item The \texttt{open-cbgm} library (my implementation of the CBGM, based on these principles) is freely available at \url{https://github.com/jjmccollum/open-cbgm}, and the standalone command-line utility is available at \url{https://github.com/jjmccollum/open-cbgm-standalone}

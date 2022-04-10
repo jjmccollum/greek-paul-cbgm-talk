@@ -1,0 +1,26 @@
+digraph roadmap {
+	margin=0;
+    nodesep=1;
+    anchor_1[style=invis];
+	collation[shape="plain", label="Collation"];
+	local_stemma[shape="plain", label="Local\nStemma"];
+	witness[shape="plain", label="Witness"];
+	genealogical_relationship[shape="plain", label="Genealogical\nRelationship"];
+	potential_ancestor[shape="plain", label="Potential\nAncestor"];
+	textual_flow[shape="plain", label="Textual\nFlow"];
+	substemma[shape="plain", label="Substemma"];
+    global_stemma[shape="plain", label="Global\nStemma"];
+    anchor_1 -> local_stemma[style=invis];
+	collation -> local_stemma;
+    collation -> witness;
+    local_stemma -> genealogical_relationship[color=blue];
+    witness -> genealogical_relationship;
+    genealogical_relationship -> potential_ancestor[color=blue];
+    genealogical_relationship -> textual_flow[color=blue];
+    genealogical_relationship -> substemma;
+    potential_ancestor -> textual_flow[color=blue];
+    potential_ancestor -> substemma;
+    textual_flow -> local_stemma[style=dashed, color=blue];
+    substemma -> global_stemma;
+    textual_flow -> global_stemma[style=invis];
+}
