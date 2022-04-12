@@ -39,12 +39,6 @@
 	\end{frame}
 	\begin{frame}
 		\begin{itemize}
-			\item \emph{Not} a way to make computers do textual criticism, but a way for them to help us refine human judgments
-			\item \emph{Not} a new methodology for evaluating variant readings, but a ``meta-approach'' to be used on top of existing methods
-		\end{itemize}
-	\end{frame}
-	\begin{frame}
-		\begin{itemize}
 			\item Intended to solve \emph{contamination}, or mixture across branches of the textual tradition
 		\end{itemize}
 		\begin{center}
@@ -60,6 +54,12 @@
 				\item Scribes typically used fewer sources rather than many.
 				\item Scribes typically used closely related sources rather than distant ones.
 			\end{enumerate}
+		\end{itemize}
+	\end{frame}
+	\begin{frame}
+		\begin{itemize}
+			\item \emph{Not} a new methodology for evaluating variant readings, but a ``meta-approach'' to be used on top of existing methods			
+			\item \emph{Not} a way to make computers do textual criticism, but a way for them to help us refine human judgments
 		\end{itemize}
 	\end{frame}
 	\section*{Roadmap}
@@ -148,12 +148,29 @@
 	\begin{frame}
 		\begin{columns}
 			\begin{column}{0.55\textwidth}
+				\begin{itemize}
+					\item Computationally, just a directed graph.
+				\end{itemize}
 				\includegraphics[width=\textwidth]{../img/B25K1V4U22-26-local-stemma-no-legend.pdf}
 			\end{column}
 			\begin{column}{0.4\textwidth}
 				\includegraphics[scale=0.6667]{../img/local-stemma-xml.png}
 			\end{column}
 		\end{columns}
+	\end{frame}
+	\begin{frame}
+		\begin{itemize}
+			\item Relationships between readings are determined by checking for a path between them
+			\item $a = b$: path of length $0$
+			\item $a > b$: path of length $> 0$ from $a$ to $b$
+			\item NOREL: no path from $a$ to $b$, but both have a \emph{common ancestor}
+			\item UNCL: same as NOREL, but no common ancestor (reserved for when we don't know where $a$ or $b$ fits in the stemma)
+		\end{itemize}
+		\begin{center}
+			\includegraphics[scale=0.5]{../img/B05K2V5U26-30-local-stemma.pdf}
+			\includegraphics[scale=0.5]{../img/B05K2V5U26-30-local-stemma-path-2.pdf}
+			\includegraphics[scale=0.5]{../img/B05K2V5U26-30-local-stemma-path-3.pdf}
+		\end{center}
 	\end{frame}
 	\section*{Witnesses}
 	\begin{frame}
