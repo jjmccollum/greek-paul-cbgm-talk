@@ -1,4 +1,5 @@
 digraph local_stemma {
+	margin=0;
 	subgraph cluster_legend {
 		passage [shape=plaintext, label="3Jo 1:13/24-26"]
 		readings [shape=plaintext, label="a: σοι γραφειν\lb: γραφειν σοι\lc: σοι γραψαι\lcf: σοι σοι γραψαι\ld: γραψαι σοι\le: γραψαι\lf: –\l"];

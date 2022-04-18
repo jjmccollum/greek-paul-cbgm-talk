@@ -8,27 +8,13 @@
 \begin{document}
 	\begin{frame}
 		\titlepage		
-		\phantom{\cite{McCollum19}\cite{McCollum20-1}\cite{McCollum20-2}\cite{McCollum21}\cite{Swanson.Luke}}%Hide initial full-text citations here
+		\phantom{\cite{Swanson.Luke}}%Hide initial full-text citations here
 	\end{frame}
-%	\begin{frame}{About Me}
-%		\begin{itemize}
-%			\item Research Associate at VT (for a few more days)
-%			\item Soon: PhD candidate at ACU (supervisor: Stephen Carlson)
-%			\item Publications/talks in \emph{AUSS}, \emph{FilNeot}, \emph{TC}, \emph{SBL} (see bibliography)
-%			\item PS guest talk: \url{https://www.youtube.com/watch?v=vbUnZZxww-o}
-%		\end{itemize}
-%		\begin{figure}
-%			\centering
-%			\includegraphics[width=0.3\textwidth]{../img/max-and-moritz-in-biblical-greek.png}
-%			\quad
-%			\includegraphics[width=0.35\textwidth]{../img/the-tale-of-peter-rabbit-in-koine-greek.png}
-%		\end{figure}
-%	\end{frame}
 	\section*{About the CBGM}
 	\begin{frame}
 		\begin{itemize}
 			\item Developed over thirty years by Gerd Mink, culminating in the latest updates to the \emph{Editio Critica Maior} (\emph{ECM})
-			\item Important reading:
+			\item Recommended reading:
 			\begin{itemize} 
 				\item \cite{Mink04}
 				\item \cite{Gurry17}
@@ -46,8 +32,10 @@
 		\end{center}
 	\end{frame}
 	\begin{frame}
+		\onslide<2->{\hfill\includegraphics[scale=0.2]{../img/adam.png}}
 		\begin{itemize}
-			\item Methodological assumptions:
+			\item Key assumption: \emph{no hypothetical ancestors} (except the \emph{Ausgangstext} A)
+			\item Other important assumptions:
 			\begin{enumerate}
 				\item Scribes typically copied their exemplars with fidelity.
 				\item If a scribe introduced a variant, then it came from some other reading.
@@ -99,7 +87,7 @@
 			\includegraphics[width=0.65\textwidth]{../img/collation-xml.png}
 		\end{center}
 	\end{frame}
-	\begin{frame}
+	\begin{frame}[fragile]
 		\begin{columns}
 			\begin{column}{0.25\textwidth}
 				\includegraphics[width=\textwidth]{../img/swanson-luke-10-2-2.png}
@@ -108,6 +96,15 @@
 				\includegraphics[width=\textwidth]{../img/app-xml.png}
 			\end{column}
 		\end{columns}
+		\begin{center}
+\begin{verbatim}
+                        reading_support = {
+                            "f13": "1",
+                            "P75": "1-f1",
+                            "f1": "2"
+                        }
+\end{verbatim}
+		\end{center}
 	\end{frame}
 	\section*{The Local Stemma}
 	\begin{frame}
@@ -136,7 +133,7 @@
 			\begin{itemize}
 				\item \emph{defective} readings (e.g., misspellings, reconstructions)
 				\item \emph{orthographic} readings (e.g., regional differences)
-				\item \emph{split} attestations of the same reading (coincidental agreement)
+				\item \emph{split} attestations of the same reading (coincidental emergence)
 				\item \emph{ambiguous} readings (can be reconstructed as more than one reading)
 			\end{itemize}
 			\item Some of these may be collapsed with other substantive readings
@@ -161,15 +158,27 @@
 	\begin{frame}
 		\begin{itemize}
 			\item Relationships between readings are determined by checking for a path between them
-			\item $a = b$: path of length $0$
-			\item $a > b$: path of length $> 0$ from $a$ to $b$
-			\item NOREL: no path from $a$ to $b$, but both have a \emph{common ancestor}
-			\item UNCL: same as NOREL, but no common ancestor (reserved for when we don't know where $a$ or $b$ fits in the stemma)
+			\item $a = b$ (agreement): path of length $0$
+			\item $a > b$ (prior): path of length $> 0$ from $a$ to $b$
+			\item $a < b$ (posterior): path of length $> 0$ from $b$ to $a$
+			\item NOREL (no relationship): no path from $a$ to $b$, but both have a \emph{common ancestor}
 		\end{itemize}
 		\begin{center}
 			\includegraphics[scale=0.5]{../img/B05K2V5U26-30-local-stemma.pdf}
-			\includegraphics[scale=0.5]{../img/B05K2V5U26-30-local-stemma-path-2.pdf}
-			\includegraphics[scale=0.5]{../img/B05K2V5U26-30-local-stemma-path-3.pdf}
+		\end{center}
+	\end{frame}
+	\begin{frame}
+		\begin{itemize}
+			\item UNCL (unclear): same as NOREL, but no common ancestor (reserved for when we don't know where a reading fits in the stemma)
+			\item We say that one reading \emph{explains} another if
+			\begin{itemize}
+				\item it is the same reading (explanation by agreement), or
+				\item there is a path of length $1$ from it to the other reading
+			\end{itemize}
+			\item Lacunae do not have to be explained, and they cannot explain readings
+		\end{itemize}
+		\begin{center}
+			\includegraphics[scale=0.5]{../img/B25K1V13U24-26-local-stemma-incomplete.pdf}
 		\end{center}
 	\end{frame}
 	\section*{Witnesses}
@@ -197,7 +206,8 @@
 	\section*{Genealogical Relationships}
 	\begin{frame}
 		\begin{itemize}
-			\item The relationship of two witnesses is the overall pattern \emph{of the relationships of their readings} at all variation units where both are extant
+			\item The relationship of two witnesses is the overall pattern \emph{of the relationships of their readings} where both are extant
+			\item The \emph{cost} of a genealogical relationship is the number of explained readings that are not agreements (so the cost in the example below is $1$)
 		\end{itemize}
 		\begin{center}
 			\includegraphics[width=\textwidth]{../img/genealogical-relationships.pdf}
@@ -205,22 +215,8 @@
 	\end{frame}
 	\begin{frame}
 		\begin{itemize}
-			\item We say that one reading \emph{explains} another if
-			\begin{itemize}
-				\item it is the same reading (explanation by agreement), or
-				\item there is an edge in the local stemma from it to the other reading
-			\end{itemize}
+			\item It is convenient to encode genealogical relationships with \emph{bitmaps}
 		\end{itemize}
-		\begin{center}
-			\includegraphics[width=\textwidth]{../img/explained-readings.pdf}
-		\end{center}
-		\begin{itemize}
-			\item Lacunae do not have to be explained, and they cannot explain readings
-			\item The \emph{cost} of a genealogical relationship is the number of explained readings that are not agreements (so the cost in the example above is $2$)
-		\end{itemize}
-	\end{frame}
-	\begin{frame}
-		It is convenient to encode genealogical relationships with \emph{bit-arrays}
 		\begin{columns}
 			\begin{column}{0.45\textwidth}
 				\begin{align*}
@@ -240,7 +236,16 @@
 			\end{column}
 		\end{columns}
 		\begin{center}
-			\includegraphics[width=\textwidth]{../img/genealogical-relationships.pdf}
+			\includegraphics[width=1.125\textwidth]{../img/explained-readings.pdf}
+		\end{center}
+	\end{frame}
+	\begin{frame}
+		\begin{itemize}
+			\item For $d$ units and $n$ witnesses, $\sim n^2d$ comparisons as one-time work
+			\item The \texttt{compare\_witnesses} module (below) presents this computed data
+		\end{itemize}
+		\begin{center}
+			\includegraphics[scale=0.5]{../img/compare-witnesses.png}
 		\end{center}
 	\end{frame}
 	\section*{Potential Ancestors}
@@ -329,9 +334,14 @@
 		\end{columns}
 	\end{frame}
 	\begin{frame}
-		\begin{center}
-			\includegraphics[width=0.5\textwidth]{../img/B25K1V13U24-26-coherence-variants-strengths.pdf}
-		\end{center}
+		\begin{columns}
+			\begin{column}{0.45\textwidth}
+				\includegraphics[width=\textwidth]{../img/B25K1V13U24-26-local-stemma-incomplete.pdf}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+				\includegraphics[width=\textwidth]{../img/B25K1V13U24-26-coherence-variants-strengths.pdf}
+			\end{column}
+		\end{columns}
 	\end{frame}
 	\begin{frame}
 		\begin{columns}
@@ -396,29 +406,30 @@
 				\item Scribes typically used fewer sources rather than many.
 				\item Scribes typically used closely related sources rather than distant ones.
 			\end{enumerate}
-		\end{itemize}
-		\begin{center}
-			\includegraphics[width=0.75\textwidth]{../img/substemmata.pdf}
-		\end{center}
-	\end{frame}
-	\begin{frame}
-		\begin{itemize}
-			\item Based on assumption 3, we should prefer substemmata with fewer ancestors (``parsimony'')
-			\item Based on assumption 4, we should prefer substemmata with ancestors that agree as often as possible with the witness
 			\item A balancing act: the substemma \{L938\} is more parsimonious, but may not explain as many readings by agreement
 		\end{itemize}
 		\begin{center}
 			\includegraphics[width=0.75\textwidth]{../img/substemmata.pdf}
 		\end{center}
 	\end{frame}
-	\begin{frame}
-		\begin{itemize}
-			\item A simple cost function for each ancestor is ``the number of variation units where the ancestor explains the witness by descent and not agreement''
-		\end{itemize}
-		\begin{center}
-			\includegraphics[width=\textwidth]{../img/explained-readings-costs.pdf}
-		\end{center}
-	\end{frame}
+%	\begin{frame}
+%		\begin{itemize}
+%			\item Based on assumption 3, we should prefer substemmata with fewer ancestors (``parsimony'')
+%			\item Based on assumption 4, we should prefer substemmata with ancestors that agree as often as possible with the witness
+%			\item A balancing act: the substemma \{L938\} is more parsimonious, but may not explain as many readings by agreement
+%		\end{itemize}
+%		\begin{center}
+%			\includegraphics[width=0.75\textwidth]{../img/substemmata.pdf}
+%		\end{center}
+%	\end{frame}
+%	\begin{frame}
+%		\begin{itemize}
+%			\item A simple cost function for each ancestor is ``the number of variation units where the ancestor explains the witness by descent and not agreement''
+%		\end{itemize}
+%		\begin{center}
+%			\includegraphics[width=\textwidth]{../img/explained-readings-costs.pdf}
+%		\end{center}
+%	\end{frame}
 %	\begin{frame}
 %		\begin{columns}
 %			\begin{column}{0.45\textwidth}
