@@ -1,0 +1,76 @@
+digraph textual_flow_diagram {
+	subgraph cluster_legend {
+		label [shape=plaintext, label="3Jo 1:13/24-26b\nCon = 10"];
+	}
+	subgraph cluster_plot {
+		style=invis;
+		node [shape=ellipse];
+		0 [label="A (b)"];
+		3 [label="02 (b)"];
+		9 [label="044 (b)"];
+		20 [label="81 (b)"];
+		30 [label="254 (b)"];
+		34 [label="323 (b)"];
+		35 [label="326 (b)"];
+		42 [label="431 (b)"];
+		43 [label="436 (b)"];
+		56 [label="630 (b)"];
+		60 [label="876 (b)"];
+		65 [label="1067 (b)"];
+		70 [label="1292 (b)"];
+		73 [label="1409 (b)"];
+		74 [label="1448 (b)"];
+		77 [label="1505 (b)"];
+		78 [label="1524 (b)"];
+		82 [label="1611 (b)"];
+		87 [label="1735 (b)"];
+		88 [label="1739 (b)"];
+		93 [label="1832 (b)"];
+		98 [label="1844 (b)"];
+		99 [label="1845 (b)"];
+		100 [label="1846 (b)"];
+		101 [label="1852 (b)"];
+		104 [label="1881 (b)"];
+		106 [label="2138 (b)"];
+		109 [label="2200 (b)"];
+		110 [label="2243 (b)"];
+		111 [label="2298 (b)"];
+		112 [label="2374 (b)"];
+		116 [label="2541 (b)"];
+		120 [label="2774 (b)"];
+		121 [label="2805 (b)"];
+		0 -> 3 [color=black];
+		0 -> 9 [color=black];
+		0 -> 20 [color=black];
+		74 -> 30 [color=black];
+		0 -> 34 [color=black];
+		0 -> 35 [color=black];
+		74 -> 42 [color=black];
+		116 -> 43 [color=black];
+		109 -> 56 [color=black];
+		74 -> 60 [color=black];
+		73 -> 65 [color=black];
+		60 -> 70 [color=black];
+		116 -> 73 [color=black];
+		0 -> 74 [label="6", fontsize=10, color=black];
+		60 -> 77 [color=black];
+		30 -> 78 [color=black];
+		60 -> 82 [color=black];
+		73 -> 87 [color=black];
+		0 -> 88 [color=black];
+		60 -> 93 [color=black];
+		30 -> 98 [color=black];
+		0 -> 99 [color=black];
+		99 -> 100 [color=black];
+		0 -> 101 [color=black];
+		88 -> 104 [color=black];
+		74 -> 106 [color=black];
+		74 -> 109 [color=black];
+		93 -> 110 [color=black];
+		88 -> 111 [color=black];
+		120 -> 112 [color=black];
+		0 -> 116 [color=black];
+		99 -> 120 [color=black];
+		99 -> 121 [color=black];
+	}
+}

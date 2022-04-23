@@ -316,6 +316,11 @@
 	\end{frame}
 	\begin{frame}
 		\begin{center}
+			\includegraphics[width=\textwidth]{../img/B25K1V13U24-26Rb-coherence-attestations-b-initial.pdf}
+		\end{center}
+	\end{frame}
+	\begin{frame}
+		\begin{center}
 			\includegraphics[width=\textwidth]{../img/B25K1V13U24-26Ra-coherence-attestations-b-initial.pdf}
 		\end{center}
 	\end{frame}
@@ -468,6 +473,14 @@
 			\end{column}
 		\end{columns}
 	\end{frame}
+	\begin{frame}
+		\begin{itemize}
+			\item In practice, the \texttt{optimize\_substemmata} module finds all desired substemmata in seconds.
+		\end{itemize}
+		\begin{center}
+			\includegraphics[scale=0.5]{../img/optimize-substemmata-5_bound-10.png}
+		\end{center}
+	\end{frame}
 	\section*{The Global Stemma}
 	\begin{frame}
 		\begin{columns}
@@ -510,14 +523,28 @@
 				\end{itemize}
 			\end{column}
 			\begin{column}{0.45\textwidth}
-				\begin{center}
-					\includegraphics[width=\textwidth]{../img/B25K1V13U24-26-local-stemma-complete.pdf}
-				\end{center}	
+				\begin{overlayarea}{\textwidth}{0.5\textheight}
+					\only<1>{
+						\centering
+						\includegraphics[width=\textwidth]{../img/B25K1V13U24-26-local-stemma-complete.pdf}
+					}
+					\only<2>{
+						\centering
+						\includegraphics[width=0.75\textwidth]{../img/holy-grail.jpg}
+
+						\tiny (Source gallica.bnf.fr / Bibliothèque nationale de France)
+					}
+				\end{overlayarea}
 			\end{column}
 		\end{columns}
 		\begin{center}
 			\includegraphics[width=\textwidth]{../img/global-stemma-complete.pdf}
 		\end{center}	
+	\end{frame}
+	\begin{frame}
+		\begin{center}
+			\href{../img/global-stemma-complete-reoriented.pdf}{*Field trip*}
+		\end{center}
 	\end{frame}
 	\begin{frame}
 		\begin{itemize}
@@ -527,10 +554,12 @@
 				\item All readings in a witness must be explained by readings in its ancestor(s)
 				\item More computationally intensive, so takes a bit longer to produce
 			\end{itemize}
+			\begin{center}
+				\includegraphics[scale=0.3333]{../img/B25K1V13U24-26Ra-coherence-attestations-b-initial.pdf}
+				\hfill
+				\raisebox{0.2\textheight}{\includegraphics[scale=0.3333]{../img/partial-global-stemma.pdf}}
+			\end{center}
 		\end{itemize}
-		\begin{center}
-			\href{../img/global-stemma-complete-reoriented.pdf}{*Field trip*}
-		\end{center}
 	\end{frame}
 %	\section*{Criticisms and Idiosyncrasies}
 %	\begin{frame}
