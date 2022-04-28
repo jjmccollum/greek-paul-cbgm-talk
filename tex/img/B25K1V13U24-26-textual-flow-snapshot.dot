@@ -1,0 +1,12 @@
+digraph textual_flow {
+	node [shape=ellipse];
+	9 [label="025 (c)"];
+	44 [label="400", color=gray, style=dashed];
+	45 [label="424 (c)"];
+	53 [label="468 (c)"];
+	68 [label="945 (d)"];
+	9 -> 44 [color=gray];
+	9 -> 45 [color=black];
+	9 -> 53 [color=black];
+	9 -> 68 [color=blue];
+}
