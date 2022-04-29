@@ -14,8 +14,8 @@ This work is licensed under a
 [cc-by-image]: https://i.creativecommons.org/l/by/4.0/88x31.png
 [cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
 
-This is the accompanying slide deck for the [Greek Paul Project](https://ntvmr.uni-muenster.de/web/motb-greek-paul-project) webinar on 28 April 2022.
+This is the accompanying slide deck for "Learning the CBGM by Design," a paper presented at the [Greek Paul Project](https://ntvmr.uni-muenster.de/web/motb-greek-paul-project) Webinar on 28 April 2022.
 
 ## Citing This Resource
 
-This resource can be cited with the DOI \[TBD\].
+This resource can be cited with the DOI [10.17613/r1cp-nn79](https://doi.org/10.17613/r1cp-nn79).
